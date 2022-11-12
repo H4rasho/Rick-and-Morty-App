@@ -16,6 +16,9 @@ export const getAllCharacters = async (page: number) => {
           results {
             id
             name
+            image
+            status
+            species
           }
         }
       }

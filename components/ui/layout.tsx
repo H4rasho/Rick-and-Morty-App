@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import Head from "next/head";
 import Navigation from "./navigation";
 
@@ -13,8 +14,10 @@ export default function Layout({ children, title }: LayoutProps) {
         <title>{`Rick & Morty ${title}`}</title>
         <meta name="description" content="Rick and Morty App" />
       </Head>
-      <Navigation />
-      {children}
+      <Container maxW="container.lg">
+        <Navigation />
+        <main>{children}</main>
+      </Container>
     </>
   );
 }
