@@ -3,9 +3,14 @@ import type { GetServerSideProps, NextPage } from "next";
 import { Box, Button, Container, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Layout from "../../components/ui/layout";
-import { getAllCharacters } from "../../services/get.all.characters";
+import { getAllCharacters } from "../../services/characters/get.all.characters";
+import { CharacterPageProps } from "./types";
 
-const Characters: NextPage = ({ characters, next, prev }: any) => {
+const Characters: NextPage<CharacterPageProps> = ({
+  characters,
+  next,
+  prev,
+}) => {
   const [page, setPage] = useState(1);
   const router = useRouter();
 
