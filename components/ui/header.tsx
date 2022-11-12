@@ -1,4 +1,4 @@
-import { Box, Button, Flex, List, ListItem } from "@chakra-ui/react";
+import { Box, Button, Flex, Input, List, ListItem } from "@chakra-ui/react";
 import Link from "next/link";
 import { ROUTES } from "../../routes/routes";
 import MenuIcon from "../icons/menu.icon";
@@ -19,13 +19,14 @@ export const Nav = () => {
 
 export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
   return (
-    <header>
-      <Flex justifyContent="space-between">
+    <Box as="header" px={8} py="4" w="full" shadow="lg">
+      <Flex justifyContent="center" gap={2}>
         <Nav />
         <Button onClick={onMenuClick} display={{ sm: "none" }}>
           <MenuIcon />
         </Button>
+        <Input placeholder="Buscar" />
       </Flex>
-    </header>
+    </Box>
   );
 }

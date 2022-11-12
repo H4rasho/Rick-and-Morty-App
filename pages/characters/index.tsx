@@ -32,7 +32,7 @@ const Characters: NextPage<CharacterPageProps> = ({
       >
         {characters.map((character) => (
           <Box as="article" key={character.id} p={4} bg="white" rounded="md">
-            <Box minW={["200", "300"]}>
+            <Box minW={["200", "280"]}>
               <Image
                 src={character.image}
                 width={300}
