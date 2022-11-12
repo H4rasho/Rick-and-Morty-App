@@ -1,16 +1,6 @@
 import { useRouter } from "next/router";
 import type { GetServerSideProps, NextPage } from "next";
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Grid,
-  Heading,
-  HStack,
-  Tag,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Grid, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Layout from "../../components/ui/layout";
 import { getAllCharacters } from "../../services/characters/get.all.characters";
