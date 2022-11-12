@@ -1,8 +1,17 @@
-import { Heading } from "@chakra-ui/react";
+import { Box, Container, Heading } from "@chakra-ui/react";
 import type { NextPage } from "next";
+import Layout from "../components/ui/layout";
 
 const Home: NextPage = () => {
-  return <Heading as="h1">Rick and Morty App</Heading>;
+  return (
+    <Box h="100vh" bg="#70e000" as="main">
+      <Container>
+        <Layout title="Home">
+          <Heading>Home</Heading>
+        </Layout>
+      </Container>
+    </Box>
+  );
 };
 
 export default Home;
