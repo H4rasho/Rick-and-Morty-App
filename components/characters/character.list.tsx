@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
@@ -31,7 +31,11 @@ export default function CharacterList({
   }
 
   return (
-    <>
+    <Grid
+      as="section"
+      gap={2}
+      templateColumns={["1fr", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
+    >
       {characters.map((character) => (
         <Box as="article" key={character.id} p={4} bg="white" rounded="md">
           <Box minW={["200", "280"]}>
@@ -59,6 +63,6 @@ export default function CharacterList({
           </Flex>
         </Box>
       ))}
-    </>
+    </Grid>
   );
 }

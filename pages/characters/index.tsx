@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from "next";
-import { Button, Grid, Heading } from "@chakra-ui/react";
+import { Button, Heading } from "@chakra-ui/react";
 
 import Layout from "../../components/ui/layout";
 import { getAllCharacters } from "../../services/characters/get.all.characters";
@@ -20,13 +20,9 @@ const Characters: NextPage<CharacterPageProps> = ({
       <Heading as="h1" textAlign="center">
         Personajes
       </Heading>
-      <Grid
-        as="section"
-        gap={2}
-        templateColumns={["1fr", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
-      >
-        <CharacterList characters={characters} />
-      </Grid>
+
+      <CharacterList characters={characters} />
+
       {prev && <Button onClick={() => handlePageChange(prev)}>Prev</Button>}
       {next && <Button onClick={() => handlePageChange(next)}>Next</Button>}
     </Layout>
