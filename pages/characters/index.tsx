@@ -17,7 +17,13 @@ const Characters: NextPage<CharacterPageProps> = ({
   const router = useRouter();
 
   useEffect(() => {
-    router.push(`characters/?page=${page}`);
+    let query = "";
+
+    if (router.query.name) query += `&name=${router.query.name}`;
+    if (router.query.status) query += `&status=${router.query.status}`;
+    if (router.query.gender) query += `&gender=${router.query.gender}`;
+
+    router.push(`characters/?page=${page}${query}`);
   }, [page]);
 
   return (
@@ -48,12 +54,8 @@ const Characters: NextPage<CharacterPageProps> = ({
           </Box>
         ))}
       </Grid>
-      {prev && (
-        <Button onClick={() => setPage((prev) => prev - 1)}>Prev</Button>
-      )}
-      {next && (
-        <Button onClick={() => setPage((prev) => prev + 1)}>Next</Button>
-      )}
+      {prev && <Button onClick={() => setPage(prev)}>Prev</Button>}
+      {next && <Button onClick={() => setPage(next)}>Next</Button>}
     </Layout>
   );
 };
@@ -61,9 +63,16 @@ const Characters: NextPage<CharacterPageProps> = ({
 export default Characters;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { page = 1 } = query;
+  const page = query.page ?? 1;
+  const name = query.name as string;
+  const status = query.status as string;
+  const gender = query.gender as string;
 
-  const { characters, info } = await getAllCharacters(Number(page));
+  const { characters, info } = await getAllCharacters(Number(page), {
+    name,
+    status,
+    gender,
+  });
 
   const { next, prev } = info;
 
