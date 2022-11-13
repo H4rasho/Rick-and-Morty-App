@@ -1,6 +1,7 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Character } from "../../services/characters/types";
 
 export default function CharacterList({
@@ -8,6 +9,22 @@ export default function CharacterList({
 }: {
   characters: Character[];
 }) {
+  const [favorites, setFavorites] = useLocalStorage<Character[]>(
+    "FavoriteCharacters",
+    []
+  );
+
+  const handleAddToFavorites = (character: Character) => {
+    if (favorites.find((fav) => fav.id === character.id)) {
+      setFavorites(favorites.filter((fav) => fav.id !== character.id));
+    } else {
+      setFavorites([...favorites, character]);
+    }
+  };
+  const isFavorite = (character: Character) => {
+    return favorites.find((fav) => fav.id === character.id);
+  };
+
   if (!characters.length) {
     return <Heading>No hay personajes</Heading>;
   }
@@ -28,7 +45,17 @@ export default function CharacterList({
           <Heading as="h3" fontSize="2xl" fontWeight="bold">
             {character.name}
           </Heading>
-          <Link href={`/characters/${character.id}`}>Details</Link>
+          <Flex justifyContent="space-between">
+            <Link href={`/characters/${character.id}`}>Details</Link>
+            <Box
+              as="button"
+              fontSize="2xl"
+              title="Añadir a favoritos"
+              onClick={() => handleAddToFavorites(character)}
+            >
+              {isFavorite(character) ? "❤️" : "🤍"}
+            </Box>
+          </Flex>
         </Box>
       ))}
     </>
