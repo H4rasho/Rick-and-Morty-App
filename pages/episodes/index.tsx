@@ -1,10 +1,13 @@
-import { Box, Heading, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, VStack } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
 import Layout from "../../components/ui/layout";
+import { usePagination } from "../../hooks/usePagination";
 import { getAllEpisodes } from "../../services/episodes/get.all.episodes";
 import { EpisodesPageProps } from "./types";
 
-const Episodes: NextPage<EpisodesPageProps> = ({ episodes }) => {
+const Episodes: NextPage<EpisodesPageProps> = ({ episodes, prev, next }) => {
+  const { handlePageChange } = usePagination(1);
+
   return (
     <Layout title="Episodios">
       <Heading as="h1" mb={4} textAlign="center">
@@ -19,6 +22,8 @@ const Episodes: NextPage<EpisodesPageProps> = ({ episodes }) => {
           </Box>
         ))}
       </VStack>
+      {prev && <Button onClick={() => handlePageChange(prev)}>Prev</Button>}
+      {next && <Button onClick={() => handlePageChange(next)}>Next</Button>}
     </Layout>
   );
 };

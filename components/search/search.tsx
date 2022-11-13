@@ -10,6 +10,8 @@ export default function Search() {
   });
   const router = useRouter();
 
+  const route = router.pathname;
+
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let query = "";
@@ -22,6 +24,9 @@ export default function Search() {
     router.push(`characters?${query}`);
   };
 
+  if (route !== "/characters") {
+    return null;
+  }
   return (
     <form onSubmit={handleSearch}>
       <Box w={[250, 380, 500]} bg="white" px={4} py={2} rounded="xl">
