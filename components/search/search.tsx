@@ -4,9 +4,9 @@ import { useState } from "react";
 
 export default function Search() {
   const [search, setSeach] = useState({
-    character: "",
-    state: "all",
-    gender: "all",
+    name: "",
+    status: "All",
+    gender: "All",
   });
   const router = useRouter();
 
@@ -14,14 +14,16 @@ export default function Search() {
 
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    let query = "";
-    const { character, gender, state } = search;
+    const { name, gender, status } = search;
 
-    if (character) query += `name=${search.character}`;
-    if (gender) query += `&status=${search.state}`;
-    if (state) query += `&gender=${search.gender}`;
-
-    router.push(`characters?${query}`);
+    router.push({
+      pathname: route,
+      query: {
+        name,
+        gender,
+        status,
+      },
+    });
   };
 
   if (route !== "/characters") {
@@ -37,11 +39,11 @@ export default function Search() {
             variant="filled"
             rounded="3xl"
             colorScheme="whiteAlpha"
-            value={search.character}
+            value={search.name}
             onChange={(e) =>
               setSeach({
                 ...search,
-                character: e.target.value,
+                name: e.target.value,
               })
             }
           />
@@ -51,14 +53,14 @@ export default function Search() {
         </HStack>
         <Stack spacing={5} direction="row" mt="2">
           <Select
-            placeholder="State"
-            value={search.state}
+            placeholder="status"
+            value={search.status}
             size="sm"
             rounded="full"
-            onChange={(e) => setSeach({ ...search, state: e.target.value })}
+            onChange={(e) => setSeach({ ...search, status: e.target.value })}
           >
             <option value="Alive">Alive</option>
-            <option value="Death">Death</option>
+            <option value="Dead">Dead</option>
             <option value="unknown">unknown</option>
             <option value="All">All</option>
           </Select>
