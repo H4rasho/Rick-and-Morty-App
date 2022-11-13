@@ -8,6 +8,10 @@ export default function CharacterList({
 }: {
   characters: Character[];
 }) {
+  if (!characters.length) {
+    return <Heading>No hay personajes</Heading>;
+  }
+
   return (
     <>
       {characters.map((character) => (
