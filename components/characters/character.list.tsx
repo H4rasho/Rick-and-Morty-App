@@ -21,6 +21,7 @@ export default function CharacterList({
       setFavorites([...favorites, character]);
     }
   };
+
   const isFavorite = (character: Character) => {
     return favorites.find((fav) => fav.id === character.id);
   };
