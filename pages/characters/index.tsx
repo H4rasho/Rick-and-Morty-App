@@ -1,30 +1,19 @@
-import { useRouter } from "next/router";
 import type { GetServerSideProps, NextPage } from "next";
 import { Button, Grid, Heading } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+
 import Layout from "../../components/ui/layout";
 import { getAllCharacters } from "../../services/characters/get.all.characters";
 import { CharacterPageProps } from "./types";
 
 import CharacterList from "../../components/characters/character.list";
+import { usePagination } from "../../hooks/usePagination";
 
 const Characters: NextPage<CharacterPageProps> = ({
   characters,
   next,
   prev,
 }) => {
-  const [page, setPage] = useState(1);
-  const router = useRouter();
-
-  useEffect(() => {
-    let query = "";
-
-    if (router.query.name) query += `&name=${router.query.name}`;
-    if (router.query.status) query += `&status=${router.query.status}`;
-    if (router.query.gender) query += `&gender=${router.query.gender}`;
-
-    router.push(`characters/?page=${page}${query}`);
-  }, [page]);
+  const { handlePageChange } = usePagination(1);
 
   return (
     <Layout title="Personajes">
@@ -38,8 +27,8 @@ const Characters: NextPage<CharacterPageProps> = ({
       >
         <CharacterList characters={characters} />
       </Grid>
-      {prev && <Button onClick={() => setPage(prev)}>Prev</Button>}
-      {next && <Button onClick={() => setPage(next)}>Next</Button>}
+      {prev && <Button onClick={() => handlePageChange(prev)}>Prev</Button>}
+      {next && <Button onClick={() => handlePageChange(next)}>Next</Button>}
     </Layout>
   );
 };
