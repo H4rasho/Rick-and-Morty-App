@@ -34,7 +34,8 @@ export default Episodes;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const page = query.page ?? 1;
-  const { episodes, info } = await getAllEpisodes(Number(page));
+  const name = query.name as string;
+  const { episodes, info } = await getAllEpisodes(Number(page), { name });
   const { next, prev } = info;
 
   return {

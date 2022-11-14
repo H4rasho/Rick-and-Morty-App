@@ -1,12 +1,17 @@
 import { gql } from "@apollo/client";
 import client from "../../apollo.client";
 
-export const getAllEpisodes = async (page: number) => {
+export const getAllEpisodes = async (
+  page: number,
+  filter?: {
+    name: string;
+  }
+) => {
   const { data } = await client.query({
-    variables: { page },
+    variables: { page, filter },
     query: gql`
-      query Episodes($page: Int) {
-        episodes(page: $page) {
+      query Episodes($page: Int, $filter: FilterEpisode) {
+        episodes(page: $page, filter: $filter) {
           results {
             id
             name

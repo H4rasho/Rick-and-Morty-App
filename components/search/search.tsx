@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function Search() {
   const [search, setSeach] = useState({
     name: "",
-    status: "All",
-    gender: "All",
+    status: "",
+    gender: "",
   });
   const router = useRouter();
 
@@ -26,9 +26,6 @@ export default function Search() {
     });
   };
 
-  if (route !== "/characters") {
-    return null;
-  }
   return (
     <Box w="full" bg="white" px={4} py={2} rounded="xl">
       <form onSubmit={handleSearch}>
@@ -51,32 +48,34 @@ export default function Search() {
             Enviar
           </Button>
         </HStack>
-        <Stack spacing={5} direction="row" mt="2">
-          <Select
-            placeholder="status"
-            value={search.status}
-            size="sm"
-            rounded="full"
-            onChange={(e) => setSeach({ ...search, status: e.target.value })}
-          >
-            <option value="Alive">Alive</option>
-            <option value="Dead">Dead</option>
-            <option value="unknown">unknown</option>
-            <option value="All">All</option>
-          </Select>
-          <Select
-            size="sm"
-            rounded="full"
-            value={search.gender}
-            onChange={(e) => setSeach({ ...search, gender: e.target.value })}
-          >
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Genderless">Genderless</option>
-            <option value="unknown">unknown</option>
-            <option value="All">All</option>
-          </Select>
-        </Stack>
+        {route === "/characters" && (
+          <Stack spacing={5} direction="row" mt="2">
+            <Select
+              placeholder="status"
+              value={search.status}
+              size="sm"
+              rounded="full"
+              onChange={(e) => setSeach({ ...search, status: e.target.value })}
+            >
+              <option value="Alive">Alive</option>
+              <option value="Dead">Dead</option>
+              <option value="unknown">unknown</option>
+              <option value="All">All</option>
+            </Select>
+            <Select
+              size="sm"
+              rounded="full"
+              value={search.gender}
+              onChange={(e) => setSeach({ ...search, gender: e.target.value })}
+            >
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Genderless">Genderless</option>
+              <option value="unknown">unknown</option>
+              <option value="All">All</option>
+            </Select>
+          </Stack>
+        )}
       </form>
     </Box>
   );
