@@ -1,4 +1,5 @@
 import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
+import Link from "next/link";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Episode } from "../../services/episodes/types";
 
@@ -23,11 +24,19 @@ export default function EpisodeList({ episodes }: { episodes: Episode[] }) {
   return (
     <VStack>
       {episodes.map((episode) => (
-        <Box key={episode.id} w="full" bg="white" p={4} rounded="xl">
+        <Box
+          textAlign="left"
+          key={episode.id}
+          w="full"
+          bg="white"
+          p={4}
+          rounded="xl"
+        >
           <Heading as="h2">{episode.name}</Heading>
           <p>{episode.episode}</p>
+          <time>{episode.air_date}</time>
           <Flex justifyContent="space-between">
-            <time>{episode.air_date}</time>
+            <Link href={`/episodes/${episode.id}`}>Details</Link>
             <Box
               as="button"
               fontSize="2xl"
