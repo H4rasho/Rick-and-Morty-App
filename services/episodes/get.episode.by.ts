@@ -23,7 +23,5 @@ export const getEpisodeById = async (episodeId?: string) => {
     `,
   });
 
-  console.log(data.episode);
-
   return data.episode;
 };
