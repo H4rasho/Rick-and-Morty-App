@@ -28,20 +28,6 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
         <Button onClick={onMenuClick} display={{ sm: "none" }}>
           <MenuIcon />
         </Button>
-
-        {/* <Menu>
-            <MenuButton as={Button}>Actions</MenuButton>
-            <MenuList>
-              <MenuItem>
-                <FormControl display="flex" alignItems="center">
-                  <FormLabel htmlFor="email-alerts" mb="0">
-                    Enable email alerts?
-                  </FormLabel>
-                  <Switch id="email-alerts" />
-                </FormControl>
-              </MenuItem>
-            </MenuList>
-          </Menu> */}
       </Flex>
     </Box>
   );
