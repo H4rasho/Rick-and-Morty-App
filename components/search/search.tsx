@@ -30,8 +30,8 @@ export default function Search() {
     return null;
   }
   return (
-    <form onSubmit={handleSearch}>
-      <Box w={[250, 380, 500]} bg="white" px={4} py={2} rounded="xl">
+    <Box w="full" bg="white" px={4} py={2} rounded="xl">
+      <form onSubmit={handleSearch}>
         <HStack>
           <Input
             placeholder="Buscar"
@@ -77,7 +77,7 @@ export default function Search() {
             <option value="All">All</option>
           </Select>
         </Stack>
-      </Box>
-    </form>
+      </form>
+    </Box>
   );
 }

@@ -7,11 +7,13 @@ import Search from "../search/search";
 
 export const Nav = () => {
   return (
-    <Box as="nav" display={["none", "block"]}>
-      <List display="flex" gap={5}>
+    <Box as="nav" display={["none", "block"]} mb={2}>
+      <List display="flex" gap={5} justifyContent="center">
         {ROUTES.map(({ name, route }) => (
           <Link href={route} key={route}>
-            <ListItem>{name}</ListItem>
+            <ListItem fontSize="xl" fontWeight="semibold">
+              {name}
+            </ListItem>
           </Link>
         ))}
       </List>
@@ -21,10 +23,10 @@ export const Nav = () => {
 
 export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
   return (
-    <Box as="header" px={8} py="4" w="full" shadow="lg">
-      <Flex justifyContent="space-around" gap={2}>
+    <Box as="header" px={8} py="4" w="full" bg="white" shadow="lg" rounded="md">
+      <Nav />
+      <Flex gap={2}>
         <Search />
-        <Nav />
         <Button onClick={onMenuClick} display={{ sm: "none" }}>
           <MenuIcon />
         </Button>
