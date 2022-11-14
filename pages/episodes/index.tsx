@@ -1,6 +1,7 @@
-import { Button, Heading } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
 import EpisodeList from "../../components/episodes/episode.list";
+import H1 from "../../components/ui/h1";
 import Layout from "../../components/ui/layout";
 import { usePagination } from "../../hooks/usePagination";
 import { getAllEpisodes } from "../../services/episodes/get.all.episodes";
@@ -11,9 +12,7 @@ const Episodes: NextPage<EpisodesPageProps> = ({ episodes, prev, next }) => {
 
   return (
     <Layout title="Episodios">
-      <Heading as="h1" mb={4} textAlign="center">
-        Episodes
-      </Heading>
+      <H1>Episodes</H1>
       <EpisodeList episodes={episodes} />
       {prev && <Button onClick={() => handlePageChange(prev)}>Prev</Button>}
       {next && <Button onClick={() => handlePageChange(next)}>Next</Button>}
