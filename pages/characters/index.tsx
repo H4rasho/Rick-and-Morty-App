@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from "next";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 
 import Layout from "../../components/ui/layout";
 import { getAllCharacters } from "../../services/characters/get.all.characters";
@@ -22,8 +22,18 @@ const Characters: NextPage<CharacterPageProps> = ({
 
       <CharacterList characters={characters} />
 
-      {prev && <Button onClick={() => handlePageChange(prev)}>Prev</Button>}
-      {next && <Button onClick={() => handlePageChange(next)}>Next</Button>}
+      <Flex justifyContent="center" p={4} mt={2} mb={2} gap={16} bg="white">
+        {prev && (
+          <Button fontSize="2xl" onClick={() => handlePageChange(prev)}>
+            <span>⬅️ </span> Anterior
+          </Button>
+        )}
+        {next && (
+          <Button fontSize="2xl" onClick={() => handlePageChange(next)}>
+            Siguiente<span>➡️ </span>
+          </Button>
+        )}
+      </Flex>
     </Layout>
   );
 };

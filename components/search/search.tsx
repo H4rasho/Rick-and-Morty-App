@@ -47,7 +47,7 @@ export default function Search() {
               })
             }
           />
-          <Button rounded="full" px={6} type="submit">
+          <Button rounded="full" px={6} type="submit" bg="#9ef01a">
             Enviar
           </Button>
         </HStack>

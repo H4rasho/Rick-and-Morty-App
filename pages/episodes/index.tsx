@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
 import EpisodeList from "../../components/episodes/episode.list";
 import H1 from "../../components/ui/h1";
@@ -14,8 +14,18 @@ const Episodes: NextPage<EpisodesPageProps> = ({ episodes, prev, next }) => {
     <Layout title="Episodios">
       <H1>Episodes</H1>
       <EpisodeList episodes={episodes} />
-      {prev && <Button onClick={() => handlePageChange(prev)}>Prev</Button>}
-      {next && <Button onClick={() => handlePageChange(next)}>Next</Button>}
+      <Flex justifyContent="center" p={4} mt={2} mb={2} gap={16} bg="white">
+        {prev && (
+          <Button fontSize="2xl" onClick={() => handlePageChange(prev)}>
+            <span>⬅️ </span> Anterior
+          </Button>
+        )}
+        {next && (
+          <Button fontSize="2xl" onClick={() => handlePageChange(next)}>
+            Siguiente<span>➡️ </span>
+          </Button>
+        )}
+      </Flex>
     </Layout>
   );
 };
