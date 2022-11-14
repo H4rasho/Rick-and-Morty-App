@@ -1,3 +1,5 @@
+import { Episode } from "../episodes/types";
+
 export interface Character {
   id: string;
   name: string;
@@ -9,4 +11,5 @@ export interface CharacterDetalis extends Character {
   species: string;
   status: string;
   type: string;
+  episode: Episode[];
 }

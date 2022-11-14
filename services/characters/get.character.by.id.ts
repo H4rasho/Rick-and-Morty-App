@@ -16,6 +16,12 @@ export const getCharacterById = async (characterId?: string) => {
           species
           status
           type
+          episode {
+            id
+            name
+            episode
+            air_date
+          }
         }
       }
     `,

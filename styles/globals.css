@@ -13,3 +13,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.character-episode-list {
+  column-count: 1;
+}
+
+
+@media (min-width: 500px) {
+  .character-episode-list {
+    column-count: 2;
+  }
+}
+
+
+
