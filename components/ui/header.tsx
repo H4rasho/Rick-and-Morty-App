@@ -11,7 +11,13 @@ export const Nav = () => {
       <List display="flex" gap={5} justifyContent="center">
         {ROUTES.map(({ name, route }) => (
           <Link href={route} key={route}>
-            <ListItem fontSize="xl" fontWeight="semibold">
+            <ListItem
+              fontSize="xl"
+              fontWeight="semibold"
+              _hover={{
+                color: "blue.500",
+              }}
+            >
               {name}
             </ListItem>
           </Link>

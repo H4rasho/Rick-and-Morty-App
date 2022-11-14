@@ -44,7 +44,13 @@ export default function CustomDrawer({
             <List display="flex" flexDirection="column" gap={5}>
               {ROUTES.map(({ name, route }) => (
                 <Link href={route} key={route}>
-                  <Text fontSize="xl" fontWeight="semibold">
+                  <Text
+                    fontSize="xl"
+                    fontWeight="semibold"
+                    _hover={{
+                      color: "blue.500",
+                    }}
+                  >
                     {name}
                   </Text>
                 </Link>
