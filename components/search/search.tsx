@@ -64,6 +64,7 @@ export default function Search() {
             </Select>
             <Select
               size="sm"
+              placeholder="gender"
               rounded="full"
               value={search.gender}
               onChange={(e) => setSeach({ ...search, gender: e.target.value })}
