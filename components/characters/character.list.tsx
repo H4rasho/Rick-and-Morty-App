@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
@@ -51,7 +51,16 @@ export default function CharacterList({
             {character.name}
           </Heading>
           <Flex justifyContent="space-between">
-            <Link href={`/characters/${character.id}`}>Details</Link>
+            <Link href={`/characters/${character.id}`}>
+              <Text
+                fontSize="xl"
+                _hover={{
+                  color: "blue.500",
+                }}
+              >
+                Ver Detalles
+              </Text>
+            </Link>
             <Box
               as="button"
               fontSize="2xl"

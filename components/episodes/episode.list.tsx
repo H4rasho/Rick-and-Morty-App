@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Episode } from "../../services/episodes/types";
@@ -36,7 +36,16 @@ export default function EpisodeList({ episodes }: { episodes: Episode[] }) {
           <p>{episode.episode}</p>
           <time>{episode.air_date}</time>
           <Flex justifyContent="space-between">
-            <Link href={`/episodes/${episode.id}`}>Details</Link>
+            <Link href={`/episodes/${episode.id}`}>
+              <Text
+                fontSize="xl"
+                _hover={{
+                  color: "blue.500",
+                }}
+              >
+                Ver Detalles
+              </Text>
+            </Link>
             <Box
               as="button"
               fontSize="2xl"
