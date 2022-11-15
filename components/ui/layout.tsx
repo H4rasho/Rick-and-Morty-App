@@ -1,5 +1,6 @@
 import { Container } from "@chakra-ui/react";
 import Head from "next/head";
+import Footer from "./footer";
 import Navigation from "./navigation";
 
 interface LayoutProps {
@@ -17,6 +18,7 @@ export default function Layout({ children, title }: LayoutProps) {
       <Container maxW="container.lg">
         <Navigation />
         <main>{children}</main>
+        <Footer />
       </Container>
     </>
   );
