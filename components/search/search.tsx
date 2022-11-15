@@ -48,7 +48,7 @@ export default function Search() {
             Enviar
           </Button>
         </HStack>
-        {route === "/characters" && (
+        {route === "/" && (
           <Stack spacing={5} direction="row" mt="2">
             <Select
               placeholder="status"

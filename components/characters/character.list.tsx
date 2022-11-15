@@ -51,7 +51,7 @@ export default function CharacterList({
             {character.name}
           </Heading>
           <Flex justifyContent="space-between">
-            <Link href={`/characters/${character.id}`}>
+            <Link href={`/${character.id}`}>
               <Text
                 fontSize="xl"
                 _hover={{

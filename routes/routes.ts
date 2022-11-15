@@ -1,7 +1,7 @@
 export const ROUTES = [
   {
     name: "Personajes",
-    route: "/characters",
+    route: "/",
   },
   {
     name: "Capítulos",
