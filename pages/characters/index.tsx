@@ -3,11 +3,17 @@ import { Button, Flex } from "@chakra-ui/react";
 
 import Layout from "../../components/ui/layout";
 import { getAllCharacters } from "../../services/characters/get.all.characters";
-import { CharacterPageProps } from "./types";
 
 import CharacterList from "../../components/characters/character.list";
 import { usePagination } from "../../hooks/usePagination";
 import H1 from "../../components/ui/h1";
+import { Character } from "../../services/characters/types";
+
+export interface CharacterPageProps {
+  characters: Array<Character>;
+  next: number;
+  prev: number;
+}
 
 const Characters: NextPage<CharacterPageProps> = ({
   characters,

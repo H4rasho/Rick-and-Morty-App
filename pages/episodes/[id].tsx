@@ -4,7 +4,11 @@ import Image from "next/image";
 import { useRef } from "react";
 import Layout from "../../components/ui/layout";
 import { getEpisodeById } from "../../services/episodes/get.episode.by";
-import { EpisodeDetailsProps } from "./types";
+import { EpisodeDetails } from "../../services/episodes/types";
+
+export interface EpisodeDetailsProps {
+  episode: EpisodeDetails;
+}
 
 const EspisodeDetailsPage = ({ episode }: EpisodeDetailsProps) => {
   const imageRef = useRef(null);

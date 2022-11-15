@@ -5,7 +5,13 @@ import H1 from "../../components/ui/h1";
 import Layout from "../../components/ui/layout";
 import { usePagination } from "../../hooks/usePagination";
 import { getAllEpisodes } from "../../services/episodes/get.all.episodes";
-import { EpisodesPageProps } from "./types";
+import { Episode } from "../../services/episodes/types";
+
+export interface EpisodesPageProps {
+  episodes: Episode[];
+  next: number;
+  prev: number;
+}
 
 const Episodes: NextPage<EpisodesPageProps> = ({ episodes, prev, next }) => {
   const { handlePageChange } = usePagination(1);

@@ -18,7 +18,11 @@ import H2 from "../../components/ui/h2";
 import Layout from "../../components/ui/layout";
 
 import { getCharacterById } from "../../services/characters/get.character.by.id";
-import { CharacterDetailsProps } from "./types";
+import { CharacterDetalis } from "../../services/characters/types";
+
+export interface CharacterDetailsProps {
+  character: CharacterDetalis;
+}
 
 const CharacterDetailsPage = ({ character }: CharacterDetailsProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
