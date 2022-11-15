@@ -17,8 +17,8 @@ const Episodes: NextPage<EpisodesPageProps> = ({ episodes, prev, next }) => {
   const { handlePageChange } = usePagination(1);
 
   return (
-    <Layout title="Episodios">
-      <H1>Episodes</H1>
+    <Layout title="Capítulos">
+      <H1>Capítulos</H1>
       <EpisodeList episodes={episodes} />
       <Flex justifyContent="center" p={4} mt={2} mb={2} gap={16} bg="white">
         {prev && (
