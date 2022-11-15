@@ -9,6 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Tag,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -24,6 +25,12 @@ export interface CharacterDetailsProps {
   character: CharacterDetalis;
 }
 
+const STATUS_COLOR = {
+  Alive: "#00FF00",
+  Dead: "#FF0000",
+  unknown: "gray",
+};
+
 const CharacterDetailsPage = ({ character }: CharacterDetailsProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -35,6 +42,8 @@ const CharacterDetailsPage = ({ character }: CharacterDetailsProps) => {
     species,
     type: t,
     episode: episodes,
+    origin,
+    location,
   } = character;
   const type = t.trim().length > 0 || "Not specified";
 
@@ -52,10 +61,22 @@ const CharacterDetailsPage = ({ character }: CharacterDetailsProps) => {
           <Image src={image} alt={name} width={300} height={300} />
           <Box>
             <Text>ID: {id}</Text>
-            <Text>Status: {status}</Text>
+            <Flex gap={2}>
+              <Text>Status: </Text>
+              <Tag bg={STATUS_COLOR[status]}>{status}</Tag>
+            </Flex>
             <Text>Gender: {gender}</Text>
             <Text>Species: {species}</Text>
             <Text>Type: {type}</Text>
+            <Flex gap={2}>
+              <Text>Origin: {origin.name}</Text>
+              <Text>Dimension: {origin.dimension}</Text>
+            </Flex>
+            <Flex gap={2}>
+              <Text>Location: {location.name}</Text>
+              <Text>Dimension: {location.dimension}</Text>
+            </Flex>
+
             <Button mt={2} onClick={onOpen}>
               Ver Apariciones
             </Button>

@@ -22,6 +22,14 @@ export const getCharacterById = async (characterId?: string) => {
             episode
             air_date
           }
+          location {
+            name
+            dimension
+          }
+          origin {
+            name
+            dimension
+          }
         }
       }
     `,
